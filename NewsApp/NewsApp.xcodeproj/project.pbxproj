@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		49255B6F205BDD7F00254AFE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49255B6E205BDD7F00254AFE /* ViewController.swift */; };
 		499EFEF7205BECBC00E38318 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499EFEF6205BECBC00E38318 /* NewsTableViewCell.swift */; };
 		499EFEF9205BEEE400E38318 /* NewsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499EFEF8205BEEE400E38318 /* NewsModel.swift */; };
 		499EFEFB205BF0FD00E38318 /* NewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499EFEFA205BF0FD00E38318 /* NewsTableViewController.swift */; };
@@ -39,7 +38,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		49255B6E205BDD7F00254AFE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		499EFEF6205BECBC00E38318 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 		499EFEF8205BEEE400E38318 /* NewsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsModel.swift; sourceTree = "<group>"; };
 		499EFEFA205BF0FD00E38318 /* NewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewController.swift; sourceTree = "<group>"; };
@@ -109,7 +107,6 @@
 			children = (
 				49AEA23A2057EBFA00C0F8EC /* AppDelegate.swift */,
 				49AEA23E2057EBFA00C0F8EC /* Main.storyboard */,
-				49255B6E205BDD7F00254AFE /* ViewController.swift */,
 				499EFEF8205BEEE400E38318 /* NewsModel.swift */,
 				49EC8D9A2065618600EAA705 /* NewsApi.swift */,
 				49EC8D9820655F4F00EAA705 /* NewsSource.swift */,
@@ -299,7 +296,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				499EFEF9205BEEE400E38318 /* NewsModel.swift in Sources */,
-				49255B6F205BDD7F00254AFE /* ViewController.swift in Sources */,
 				49AEA23B2057EBFA00C0F8EC /* AppDelegate.swift in Sources */,
 				499EFEFB205BF0FD00E38318 /* NewsTableViewController.swift in Sources */,
 				499EFEF7205BECBC00E38318 /* NewsTableViewCell.swift in Sources */,

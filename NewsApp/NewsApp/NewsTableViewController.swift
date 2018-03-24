@@ -10,7 +10,7 @@ import UIKit
 
 class NewsTableViewController: UITableViewController {
 
-    var model: [NewsModel]? = []
+//    var model: [NewsModel]? = []
     var api = NewsApi()
     
     @IBOutlet var tableview: UITableView!
@@ -40,17 +40,17 @@ class NewsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return self.model?.count ?? 0
+        return self.api.newsModel.count 
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "newsCell", for: indexPath) as! NewsTableViewCell
         
-        cell.title.text = self.model?[indexPath.item].newsTitle
-        cell.descript.text = self.model?[indexPath.item].newsDescription
-        cell.date.text = self.model?[indexPath.item].newsDate
-        cell.source.text = self.model?[indexPath.item].newsSource.name
-        cell.ImageView.downloadImage(from: (self.model?[indexPath.item].imageUrl!)!)
+        cell.title.text = self.api.newsModel[indexPath.item].newsTitle
+        cell.descript.text = self.api.newsModel[indexPath.item].newsDescription
+        cell.date.text = self.api.newsModel[indexPath.item].newsDate
+        cell.source.text = self.api.newsModel[indexPath.item].newsSource.name
+        cell.ImageView.downloadImage(from: (self.api.newsModel[indexPath.item].imageUrl!))
         
         return cell
     }

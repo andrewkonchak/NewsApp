@@ -11,7 +11,7 @@ import UIKit
 
 class NewsApi {
     
-    var newsModel: [NewsModel]? = []
+    var newsModel = [NewsModel]()
     let tableController = NewsTableViewController()
     
     func fetchArticles(){
@@ -31,16 +31,16 @@ class NewsApi {
                 if let articlesFromJson = json["articles"] as? [[String : AnyObject]] {
                     for articleFromJson in articlesFromJson {
                         let mainNews = NewsModel()
-                        if let title = articleFromJson["title"] as? String, let author = articleFromJson["name"] as? String, let descript = articleFromJson["description"] as? String, let url = articleFromJson["url"] as? String, let urlToImage = articleFromJson["urlToImage"] as? String, let dateNews = articleFromJson["publishedAt"] as? String {
+                        if let title = articleFromJson["title"] as? String, let author = articleFromJson["name"] as? String, let descrip = articleFromJson["description"] as? String, let url = articleFromJson["url"] as? String, let urlToImage = articleFromJson["urlToImage"] as? String, let dateNews = articleFromJson["publishedAt"] as? String {
                             
                             mainNews.newsSource.name = author
-                            mainNews.newsDescription = descript
+                            mainNews.newsDescription = descrip
                             mainNews.newsTitle = title
                             mainNews.url = url
                             mainNews.imageUrl = urlToImage
                             mainNews.newsDate = dateNews
                         }
-                        self.newsModel?.append(mainNews)
+                        self.newsModel.append(mainNews)
                     }
                 }
                 DispatchQueue.main.async {

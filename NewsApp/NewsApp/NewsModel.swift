@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NewsModel: NSObject {
+class NewsModel {
     
     var newsTitle: String?
     var newsDescription: String?
