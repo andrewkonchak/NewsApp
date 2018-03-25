@@ -12,7 +12,7 @@ import UIKit
 class NewsApi {
     
     var newsModel = [NewsModel]()
-    let tableController = NewsTableViewController()
+    var tableController: NewsTableViewController?
     
     func fetchArticles(){
         let urlRequest = URLRequest(url: URL(string: "https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=8b3c65a0564142c19fa08587567f97d3")!)
@@ -31,7 +31,13 @@ class NewsApi {
                 if let articlesFromJson = json["articles"] as? [[String : AnyObject]] {
                     for articleFromJson in articlesFromJson {
                         let mainNews = NewsModel()
-                        if let title = articleFromJson["title"] as? String, let author = articleFromJson["name"] as? String, let descrip = articleFromJson["description"] as? String, let url = articleFromJson["url"] as? String, let urlToImage = articleFromJson["urlToImage"] as? String, let dateNews = articleFromJson["publishedAt"] as? String {
+                        if let title = articleFromJson["title"] as? String,
+                            let source = articleFromJson["source"] as? [String : AnyObject],
+                            let author = source["name"] as? String,
+                            let descrip = articleFromJson["description"] as? String,
+                            let url = articleFromJson["url"] as? String,
+                            let urlToImage = articleFromJson["urlToImage"] as? String,
+                            let dateNews = articleFromJson["publishedAt"] as? String {
                             
                             mainNews.newsSource.name = author
                             mainNews.newsDescription = descrip
@@ -44,7 +50,7 @@ class NewsApi {
                     }
                 }
                 DispatchQueue.main.async {
-                    self.tableController.tableview.reloadData()
+                    self.tableController?.tableview.reloadData()
                 }
                 
             } catch let error {

@@ -33,15 +33,9 @@
                                                 <constraint firstAttribute="height" constant="130" id="WZD-xI-gb8"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title Title Title Title Title Title Title Title Title Title Title" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ri5-QI-ew9">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title Title Title Title Title Title Title Title Title Title Title" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ri5-QI-ew9">
                                             <rect key="frame" x="127" y="27" width="240" height="36"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description description description description description " textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JfV-bo-8wk">
-                                            <rect key="frame" x="127" y="72" width="240" height="33.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -62,18 +56,24 @@
                                                 </label>
                                             </subviews>
                                         </stackView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description description description description description " textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JfV-bo-8wk">
+                                            <rect key="frame" x="127" y="71" width="240" height="33.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="bottom" secondItem="lCB-Wu-3oy" secondAttribute="bottom" constant="3" id="6be-He-fzD"/>
                                         <constraint firstItem="Ri5-QI-ew9" firstAttribute="top" secondItem="kLG-pt-5Jm" secondAttribute="top" id="7Mh-si-PdP"/>
+                                        <constraint firstItem="Ri5-QI-ew9" firstAttribute="top" secondItem="9tJ-IV-jaP" secondAttribute="top" constant="27" id="9Eq-bq-N39"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="JfV-bo-8wk" secondAttribute="trailing" id="Fal-MJ-A5E"/>
                                         <constraint firstItem="JfV-bo-8wk" firstAttribute="leading" secondItem="kLG-pt-5Jm" secondAttribute="trailing" constant="5" id="RHv-V8-4Hz"/>
                                         <constraint firstItem="kLG-pt-5Jm" firstAttribute="top" secondItem="9tJ-IV-jaP" secondAttribute="top" constant="27" id="Wh5-lJ-UlA"/>
                                         <constraint firstItem="oan-ik-qwp" firstAttribute="top" secondItem="kLG-pt-5Jm" secondAttribute="bottom" constant="10" id="ZkA-FU-GWR"/>
-                                        <constraint firstItem="Ri5-QI-ew9" firstAttribute="top" secondItem="9tJ-IV-jaP" secondAttribute="top" constant="27" id="aDt-AL-fcY"/>
                                         <constraint firstItem="lCB-Wu-3oy" firstAttribute="top" relation="greaterThanOrEqual" secondItem="JfV-bo-8wk" secondAttribute="bottom" constant="8" id="c5e-no-op2"/>
                                         <constraint firstItem="kLG-pt-5Jm" firstAttribute="leading" secondItem="9tJ-IV-jaP" secondAttribute="leading" constant="2" id="cnJ-wE-qti"/>
-                                        <constraint firstItem="JfV-bo-8wk" firstAttribute="top" secondItem="Ri5-QI-ew9" secondAttribute="bottom" constant="9" id="d21-cD-2qh"/>
+                                        <constraint firstItem="JfV-bo-8wk" firstAttribute="top" secondItem="Ri5-QI-ew9" secondAttribute="bottom" constant="8" id="d21-cD-2qh"/>
                                         <constraint firstItem="lCB-Wu-3oy" firstAttribute="leading" secondItem="9tJ-IV-jaP" secondAttribute="leading" constant="12" id="e8V-uo-s6v"/>
                                         <constraint firstAttribute="trailing" secondItem="Ri5-QI-ew9" secondAttribute="trailing" constant="8" id="pac-Wh-e7M"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="lCB-Wu-3oy" secondAttribute="trailing" id="sK2-MM-Bre"/>

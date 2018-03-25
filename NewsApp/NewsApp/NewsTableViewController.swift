@@ -18,6 +18,7 @@ class NewsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         api.fetchArticles()
+        api.tableController = self
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -50,7 +51,7 @@ class NewsTableViewController: UITableViewController {
         cell.descript.text = self.api.newsModel[indexPath.item].newsDescription
         cell.date.text = self.api.newsModel[indexPath.item].newsDate
         cell.source.text = self.api.newsModel[indexPath.item].newsSource.name
-        cell.ImageView.downloadImage(from: (self.api.newsModel[indexPath.item].imageUrl!))
+//        cell.ImageView.downloadImage(from: (self.api.newsModel[indexPath.item].imageUrl)!)
         
         return cell
     }
