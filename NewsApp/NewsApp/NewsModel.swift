@@ -10,12 +10,12 @@ import UIKit
 
 class NewsModel {
     
-    var newsTitle: String?
-    var newsDescription: String?
+    var newsTitle: String = ""
+    var newsDescription: String = ""
     var newsSource = NewsSource()
     var newsDate: String?
     var url: String?
-    var imageUrl: String?
+    var imageUrl: String = ""
     var totalResults: Int?
 
 }

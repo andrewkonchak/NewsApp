@@ -52,18 +52,12 @@ class NewsApi {
                 DispatchQueue.main.async {
                     self.tableController?.tableview.reloadData()
                 }
-                
             } catch let error {
                 print(error)
             }
-            
-            
         }
-        
         task.resume()
-        
     }
- 
 }
 
 extension UIImageView {
