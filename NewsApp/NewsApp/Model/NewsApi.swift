@@ -14,6 +14,8 @@ class NewsApi {
     var newsModel = [NewsModel]()
     var tableController: NewsTableViewController?
     
+    // MARK: - Parsing JSON
+    
     func fetchArticles(){
         let urlRequest = URLRequest(url: URL(string: "https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=9a209a9a266f47838f0c32ff4202b97c")!)
         
@@ -61,6 +63,8 @@ class NewsApi {
     }
 }
 
+// MARK: - Download image from url
+
 extension UIImageView {
     
     func downloadImage(from url: String){
@@ -83,22 +87,3 @@ extension UIImageView {
         }
     }
 }
-
-//        let urlRequest = URLRequest(url: URL(string: url)!)
-//
-//        let task = URLSession.shared.dataTask(with: urlRequest) { (data,response,error) in
-//
-//            if error != nil {
-//                print(error)
-//                return
-//            }
-//
-//            DispatchQueue.main.async {
-//                self.image = UIImage(data: data!)
-//            }
-//        }
-//        task.resume()
-//    }
-//}
-
-
