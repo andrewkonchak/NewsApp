@@ -14,11 +14,16 @@ class NewsTableViewController: UITableViewController {
     var viewController: ViewController?
     
     @IBOutlet var tableview: UITableView!
+    @IBOutlet weak var newsLabelCount: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         api.fetchArticles()
         api.tableController = self
+        newsLabelCount.layer.cornerRadius = 11
+        newsLabelCount.layer.borderWidth = 1
+        newsLabelCount.layer.borderColor = #colorLiteral(red: 0.09019608051, green: 0, blue: 0.3019607961, alpha: 1)
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -47,4 +52,18 @@ class NewsTableViewController: UITableViewController {
         return cell
     }
 
+}
+
+extension UITableView {
+    
+    var rowsCount: Int {
+        let sections = self.numberOfSections
+        var rows = 0
+        
+        for i in 0...sections - 1 {
+            rows += self.numberOfRows(inSection: i)
+        }
+        
+        return rows
+    }
 }
