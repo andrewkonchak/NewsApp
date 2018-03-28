@@ -11,6 +11,7 @@ import UIKit
 class NewsTableViewController: UITableViewController {
 
     var api = NewsApi()
+    var viewController: ViewController?
     
     @IBOutlet var tableview: UITableView!
     

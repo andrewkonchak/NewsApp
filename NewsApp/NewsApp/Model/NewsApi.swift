@@ -15,7 +15,7 @@ class NewsApi {
     var tableController: NewsTableViewController?
     
     func fetchArticles(){
-        let urlRequest = URLRequest(url: URL(string: "https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=8b3c65a0564142c19fa08587567f97d3")!)
+        let urlRequest = URLRequest(url: URL(string: "https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=9a209a9a266f47838f0c32ff4202b97c")!)
         
         let task = URLSession.shared.dataTask(with: urlRequest) { (data,response,error) in
             
@@ -45,6 +45,7 @@ class NewsApi {
                             mainNews.url = url
                             mainNews.imageUrl = urlToImage
                             mainNews.newsDate = dateNews
+                            
                         }
                         self.newsModel.append(mainNews)
                     }
@@ -80,3 +81,4 @@ extension UIImageView {
         task.resume()
     }
 }
+
