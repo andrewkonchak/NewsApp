@@ -56,7 +56,7 @@
                                                 </label>
                                             </subviews>
                                         </stackView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description description description description description " lineBreakMode="tailTruncation" numberOfLines="9" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JfV-bo-8wk">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description description description description description " lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JfV-bo-8wk">
                                             <rect key="frame" x="159" y="51.5" width="208" height="47"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <nil key="textColor"/>
@@ -65,8 +65,11 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="bottom" secondItem="lCB-Wu-3oy" secondAttribute="bottom" constant="3" id="6be-He-fzD"/>
+                                        <constraint firstItem="JfV-bo-8wk" firstAttribute="leading" secondItem="Ri5-QI-ew9" secondAttribute="leading" id="BFK-L2-Ewn"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="JfV-bo-8wk" secondAttribute="trailing" id="Fal-MJ-A5E"/>
+                                        <constraint firstItem="Ri5-QI-ew9" firstAttribute="leading" secondItem="9tJ-IV-jaP" secondAttribute="leading" constant="159" id="FyU-dn-gnt"/>
                                         <constraint firstItem="JfV-bo-8wk" firstAttribute="leading" secondItem="kLG-pt-5Jm" secondAttribute="trailing" constant="4" id="RHv-V8-4Hz"/>
+                                        <constraint firstItem="JfV-bo-8wk" firstAttribute="trailing" secondItem="Ri5-QI-ew9" secondAttribute="trailing" id="U23-uo-din"/>
                                         <constraint firstItem="JfV-bo-8wk" firstAttribute="top" secondItem="Ri5-QI-ew9" secondAttribute="bottom" constant="5" id="Ucb-LO-1BQ"/>
                                         <constraint firstItem="kLG-pt-5Jm" firstAttribute="top" secondItem="9tJ-IV-jaP" secondAttribute="top" constant="8" id="Wh5-lJ-UlA"/>
                                         <constraint firstItem="oan-ik-qwp" firstAttribute="top" secondItem="kLG-pt-5Jm" secondAttribute="bottom" constant="5" id="ZkA-FU-GWR"/>
@@ -76,6 +79,7 @@
                                         <constraint firstItem="Ri5-QI-ew9" firstAttribute="top" secondItem="9tJ-IV-jaP" secondAttribute="top" constant="13" id="gOU-fG-eV6"/>
                                         <constraint firstAttribute="trailing" secondItem="Ri5-QI-ew9" secondAttribute="trailing" constant="8" id="pac-Wh-e7M"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="lCB-Wu-3oy" secondAttribute="trailing" id="sK2-MM-Bre"/>
+                                        <constraint firstItem="JfV-bo-8wk" firstAttribute="width" secondItem="Ri5-QI-ew9" secondAttribute="width" id="t9q-7r-xlG"/>
                                         <constraint firstItem="Ri5-QI-ew9" firstAttribute="leading" secondItem="kLG-pt-5Jm" secondAttribute="trailing" constant="4" id="uBC-gX-Px2"/>
                                     </constraints>
                                 </tableViewCellContentView>
