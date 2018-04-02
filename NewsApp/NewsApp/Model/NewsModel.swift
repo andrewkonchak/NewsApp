@@ -16,5 +16,6 @@ class NewsModel {
     var newsDate: String?
     var url: String?
     var imageUrl: String = ""
-
+    var newsCount: String = ""
+    
 }

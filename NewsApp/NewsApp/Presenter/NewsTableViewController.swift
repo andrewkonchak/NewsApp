@@ -18,8 +18,10 @@ class NewsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         api.fetchArticles()
         api.tableController = self
+        
         newsLabelCount.layer.cornerRadius = 11
         newsLabelCount.layer.borderWidth = 1
         newsLabelCount.layer.borderColor = #colorLiteral(red: 0.09019608051, green: 0, blue: 0.3019607961, alpha: 1)
@@ -28,6 +30,7 @@ class NewsTableViewController: UITableViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+        
     }
 
     // MARK: - Table view data source
@@ -37,7 +40,7 @@ class NewsTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.api.newsModel.count 
+            return self.api.newsModel.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -49,9 +52,10 @@ class NewsTableViewController: UITableViewController {
         cell.source.text = self.api.newsModel[indexPath.row].newsSource.name
         cell.ImageView.downloadImage(from: (self.api.newsModel[indexPath.row].imageUrl))
         
+        self.newsLabelCount.text = String(self.api.newsModel.count)
+        
         return cell
     }
-
 }
 
 extension UITableView {
@@ -63,7 +67,6 @@ extension UITableView {
         for i in 0...sections - 1 {
             rows += self.numberOfRows(inSection: i)
         }
-        
         return rows
     }
 }
