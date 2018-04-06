@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SafariServices
 
 class NewsTableViewController: UITableViewController {
 
@@ -24,7 +25,7 @@ class NewsTableViewController: UITableViewController {
         
         newsLabelCount.layer.cornerRadius = 11
         newsLabelCount.layer.borderWidth = 1
-        newsLabelCount.layer.borderColor = #colorLiteral(red: 0.09019608051, green: 0, blue: 0.3019607961, alpha: 1)
+        newsLabelCount.layer.borderColor = #colorLiteral(red: 0.7792011499, green: 0.3920885921, blue: 0.1603198946, alpha: 1)
 
     }
 
@@ -56,17 +57,19 @@ class NewsTableViewController: UITableViewController {
         
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let newsUrl = self.api.newsModel[indexPath.row].url
+        let URL = NSURL(string: newsUrl)!
+        let webVC = SFSafariViewController(url: URL as URL)
+        
+        present(webVC, animated: true, completion: nil)
+        
+    }
+
+    
+    
+    
 }
 
-extension UITableView {
-    
-    var rowsCount: Int {
-        let sections = self.numberOfSections
-        var rows = 0
-        
-        for i in 0...sections - 1 {
-            rows += self.numberOfRows(inSection: i)
-        }
-        return rows
-    }
-}
+

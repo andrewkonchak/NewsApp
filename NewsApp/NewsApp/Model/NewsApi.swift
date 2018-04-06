@@ -41,15 +41,12 @@ class NewsApi {
                             let urlToImage = articleFromJson["urlToImage"] as? String,
                             let dateNews = articleFromJson["publishedAt"] as? String {
                             
-//                            let newsCounter = articleFromJson["totalResults"] as? Int
-                            
                             mainNews.newsSource.name = author
                             mainNews.newsDescription = descrip
                             mainNews.newsTitle = title
                             mainNews.url = url
                             mainNews.imageUrl = urlToImage
                             mainNews.newsDate = dateNews
-//                            mainNews.newsCount = String(newsCounter)
                             
                         }
                         self.newsModel.append(mainNews)
