@@ -10,9 +10,17 @@ import UIKit
 import SafariServices
 
 class NewsTableViewController: UITableViewController {
-
+    
     var api = NewsApi()
-    var viewController: ViewController?
+    
+    // MARK: - Refresh control
+    lazy var refresher: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.tintColor = #colorLiteral(red: 0.7792011499, green: 0.3920885921, blue: 0.1603198946, alpha: 1)
+        refreshControl.addTarget(self, action: #selector(requestData), for: .valueChanged)
+        
+        return refreshControl
+    }()
     
     @IBOutlet var tableview: UITableView!
     @IBOutlet weak var newsLabelCount: UILabel!
@@ -26,24 +34,37 @@ class NewsTableViewController: UITableViewController {
         newsLabelCount.layer.cornerRadius = 11
         newsLabelCount.layer.borderWidth = 1
         newsLabelCount.layer.borderColor = #colorLiteral(red: 0.7792011499, green: 0.3920885921, blue: 0.1603198946, alpha: 1)
-
+        
+        tableview.refreshControl = refresher
+        
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         
     }
+    
+    // MARK: - Refresh control time end refreshing
+    @objc
+    func requestData() {
+        
+        let timeRefresh = DispatchTime.now() + .milliseconds(1000)
+        DispatchQueue.main.asyncAfter(deadline: timeRefresh) {
+            self.refresher.endRefreshing()
+        }
+    }
 
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return self.api.newsModel.count
+        return self.api.newsModel.count
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "newsCell", for: indexPath) as! NewsTableViewCell
         
@@ -66,10 +87,6 @@ class NewsTableViewController: UITableViewController {
         present(webVC, animated: true, completion: nil)
         
     }
-
-    
-    
-    
 }
 
 
