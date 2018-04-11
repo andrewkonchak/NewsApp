@@ -16,8 +16,8 @@ class NewsApi {
     
     // MARK: - Parsing JSON
     
-    func fetchArticles(){
-        let urlRequest = URLRequest(url: URL(string: "https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=9a209a9a266f47838f0c32ff4202b97c")!)
+    func fetchArticles(country: NewsCountry, category: NewsCategory) {
+        let urlRequest = URLRequest(url: URL(string: "https://newsapi.org/v2/top-headlines?country=\(country.rawValue)&category=\(category.rawValue)&apiKey=9a209a9a266f47838f0c32ff4202b97c")!)
         
         let task = URLSession.shared.dataTask(with: urlRequest) { (data,response,error) in
             
@@ -39,17 +39,23 @@ class NewsApi {
                             let descrip = articleFromJson["description"] as? String,
                             let url = articleFromJson["url"] as? String,
                             let urlToImage = articleFromJson["urlToImage"] as? String,
-                            let dateNews = articleFromJson["publishedAt"] as? String {
+                            let authorNews = articleFromJson["author"] as? String,
+                            let publishedAt = articleFromJson["publishedAt"] as? String {
                             
                             mainNews.newsSource.name = author
                             mainNews.newsDescription = descrip
                             mainNews.newsTitle = title
                             mainNews.url = url
                             mainNews.imageUrl = urlToImage
-                            mainNews.newsDate = dateNews
+                            mainNews.newsAuthor = authorNews
+                            mainNews.newsDate = publishedAt
                             
                         }
                         self.newsModel.append(mainNews)
+                        self.newsModel.sort(by: {$0.newsDate < $1.newsDate}) // Sort News By publishedAt
+                        DispatchQueue.main.async {
+                            self.tableController?.tableview.reloadData()
+                        }
                     }
                 }
                 DispatchQueue.main.async {
@@ -60,7 +66,7 @@ class NewsApi {
             }
         }
         task.resume()
-    }
+    }    
 }
 
 // MARK: - Download image from url

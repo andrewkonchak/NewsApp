@@ -9,14 +9,15 @@
 import UIKit
 import SafariServices
 
-class NewsTableViewController: UITableViewController {
+class NewsTableViewController: UITableViewController, UISearchBarDelegate {
     
     var api = NewsApi()
-    
+    var newsArray = [NewsModel]()
+
     // MARK: - Refresh control
     lazy var refresher: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
-        refreshControl.tintColor = #colorLiteral(red: 0.7792011499, green: 0.3920885921, blue: 0.1603198946, alpha: 1)
+        refreshControl.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         refreshControl.addTarget(self, action: #selector(requestData), for: .valueChanged)
         
         return refreshControl
@@ -28,15 +29,18 @@ class NewsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        api.fetchArticles()
+        api.fetchArticles(country: NewsCountry.ukraine, category: NewsCategory.business)
         api.tableController = self
         
         newsLabelCount.layer.cornerRadius = 11
         newsLabelCount.layer.borderWidth = 1
-        newsLabelCount.layer.borderColor = #colorLiteral(red: 0.7792011499, green: 0.3920885921, blue: 0.1603198946, alpha: 1)
+        newsLabelCount.layer.borderColor = #colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1)
+        newsLabelCount.layer.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         
         tableview.refreshControl = refresher
         
+        searchController()
+     
     }
     
     override func didReceiveMemoryWarning() {
@@ -45,6 +49,7 @@ class NewsTableViewController: UITableViewController {
     }
     
     // MARK: - Refresh control time end refreshing
+   
     @objc
     func requestData() {
         
@@ -53,7 +58,18 @@ class NewsTableViewController: UITableViewController {
             self.refresher.endRefreshing()
         }
     }
-
+    
+    // MARK: - Search Bar delegate
+   
+    func searchController() {
+        
+        let searchBar = UISearchController(searchResultsController: nil)
+        navigationItem.searchController = searchBar
+        navigationItem.hidesSearchBarWhenScrolling = true
+        UISearchBar.appearance().tintColor = #colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1)
+        
+    }
+    
     
     // MARK: - Table view data source
     
@@ -67,10 +83,10 @@ class NewsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "newsCell", for: indexPath) as! NewsTableViewCell
-        
+    
         cell.title.text = self.api.newsModel[indexPath.row].newsTitle
         cell.descript.text = self.api.newsModel[indexPath.row].newsDescription
-        cell.date.text = self.api.newsModel[indexPath.row].newsDate
+        cell.author.text = self.api.newsModel[indexPath.row].newsAuthor
         cell.source.text = self.api.newsModel[indexPath.row].newsSource.name
         cell.ImageView.downloadImage(from: (self.api.newsModel[indexPath.row].imageUrl))
         
@@ -87,6 +103,5 @@ class NewsTableViewController: UITableViewController {
         present(webVC, animated: true, completion: nil)
         
     }
+
 }
-
-

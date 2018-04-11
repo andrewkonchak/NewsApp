@@ -48,7 +48,7 @@
                                                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i2y-F8-5Ue">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Author" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i2y-F8-5Ue">
                                                     <rect key="frame" x="182" y="0.0" width="182" height="15.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -85,7 +85,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="ImageView" destination="kLG-pt-5Jm" id="gRY-sK-0PD"/>
-                                    <outlet property="date" destination="i2y-F8-5Ue" id="cNM-pJ-PtY"/>
+                                    <outlet property="author" destination="i2y-F8-5Ue" id="JI2-EG-oGJ"/>
                                     <outlet property="descript" destination="JfV-bo-8wk" id="GgW-Oa-N9j"/>
                                     <outlet property="source" destination="oan-ik-qwp" id="h8x-gz-5Tb"/>
                                     <outlet property="title" destination="Ri5-QI-ew9" id="Sba-cA-RjB"/>
@@ -112,7 +112,7 @@
                                         <attributedString key="attributedText">
                                             <fragment content="0">
                                                 <attributes>
-                                                    <color key="NSColor" red="0.61563771963119507" green="0.61571365594863892" blue="0.61561191082000732" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <font key="NSFont" size="12" name=".AppleSystemUIFont"/>
                                                     <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                 </attributes>
@@ -137,7 +137,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Ot-Mm-Vzl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="114" y="-27"/>
+            <point key="canvasLocation" x="185" y="-27"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="8kR-W2-wUo">
@@ -146,9 +146,9 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="mX9-oc-rOd">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.12155582755804062" green="0.12157582491636276" blue="0.12154903262853622" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.0039208861999213696" green="0.003921952098608017" blue="0.0039205243811011314" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
-                            <color key="textColor" red="0.77920114994049072" green="0.39208859205245972" blue="0.16031989455223083" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="textColor" red="0.99992352724075317" green="1" blue="0.99988299608230591" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </textAttributes>
                     </navigationBar>
                     <connections>

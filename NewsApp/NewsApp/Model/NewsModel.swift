@@ -13,9 +13,10 @@ class NewsModel {
     var newsTitle: String = ""
     var newsDescription: String = ""
     var newsSource = NewsSource()
-    var newsDate: String = ""
+    var newsAuthor: String = ""
     var url: String = ""
     var imageUrl: String = ""
     var newsCount: String = ""
+    var newsDate: String = ""
     
 }
