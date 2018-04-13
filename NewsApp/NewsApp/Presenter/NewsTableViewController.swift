@@ -11,9 +11,10 @@ import SafariServices
 
 class NewsTableViewController: UITableViewController, UISearchResultsUpdating {
 
+    let searchBar = UISearchController(searchResultsController: nil)
+    
     var api = NewsApi()
     var filteredNews = [NewsModel]()
-    let searchBar = UISearchController(searchResultsController: nil)
 
     // MARK: - Refresh control
     lazy var refresher: UIRefreshControl = {
@@ -66,6 +67,7 @@ class NewsTableViewController: UITableViewController, UISearchResultsUpdating {
         navigationItem.hidesSearchBarWhenScrolling = true
         UISearchBar.appearance().tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         searchBar.searchResultsUpdater = self
+        self.searchBar.dimsBackgroundDuringPresentation = false
     }
     
     //MARK: - UISearchResultsUpdating
