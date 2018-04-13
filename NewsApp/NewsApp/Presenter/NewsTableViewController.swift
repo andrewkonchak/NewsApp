@@ -9,10 +9,11 @@
 import UIKit
 import SafariServices
 
-class NewsTableViewController: UITableViewController, UISearchBarDelegate {
-    
+class NewsTableViewController: UITableViewController, UISearchResultsUpdating {
+
     var api = NewsApi()
-    var newsArray = [NewsModel]()
+    var filteredNews = [NewsModel]()
+    let searchBar = UISearchController(searchResultsController: nil)
 
     // MARK: - Refresh control
     lazy var refresher: UIRefreshControl = {
@@ -29,7 +30,7 @@ class NewsTableViewController: UITableViewController, UISearchBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        api.fetchArticles(country: NewsCountry.ukraine, category: NewsCategory.business)
+        api.fetchArticles(country: NewsCountry.unitedStates, category: NewsCategory.business)
         api.tableController = self
         
         newsLabelCount.layer.cornerRadius = 11
@@ -40,7 +41,6 @@ class NewsTableViewController: UITableViewController, UISearchBarDelegate {
         tableview.refreshControl = refresher
         
         searchController()
-     
     }
     
     override func didReceiveMemoryWarning() {
@@ -59,17 +59,28 @@ class NewsTableViewController: UITableViewController, UISearchBarDelegate {
         }
     }
     
-    // MARK: - Search Bar delegate
+    // MARK: - Search Controller
    
     func searchController() {
-        
-        let searchBar = UISearchController(searchResultsController: nil)
+       
         navigationItem.searchController = searchBar
         navigationItem.hidesSearchBarWhenScrolling = true
-        UISearchBar.appearance().tintColor = #colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1)
-        
+        UISearchBar.appearance().tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        searchBar.searchResultsUpdater = self
     }
     
+    //MARK: - UISearchResultsUpdating
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        
+        if searchController.searchBar.text! == "" {
+            filteredNews = api.newsModel
+        } else {
+            // Filter the results
+            filteredNews = api.newsModel.filter { $0.newsTitle.lowercased().contains(searchController.searchBar.text!.lowercased()) }
+        }
+        self.tableView.reloadData()
+    }
     
     // MARK: - Table view data source
     
@@ -78,13 +89,19 @@ class NewsTableViewController: UITableViewController, UISearchBarDelegate {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if searchBar.isActive {
+            return filteredNews.count
+        }
         return self.api.newsModel.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "newsCell", for: indexPath) as! NewsTableViewCell
-    
-        cell.title.text = self.api.newsModel[indexPath.row].newsTitle
+        
+        let newsFull: NewsModel
+        newsFull = searchBar.isActive ? filteredNews[indexPath.row] : api.newsModel[indexPath.row]
+        
+        cell.title.text = newsFull.newsTitle
         cell.descript.text = self.api.newsModel[indexPath.row].newsDescription
         cell.author.text = self.api.newsModel[indexPath.row].newsAuthor
         cell.source.text = self.api.newsModel[indexPath.row].newsSource.name
