@@ -19,7 +19,7 @@ class NewsTableViewController: UITableViewController, UISearchResultsUpdating {
     lazy var refresher: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        refreshControl.addTarget(self, action: #selector(requestData), for: .valueChanged)
+        refreshControl.addTarget(self, action: #selector(requestData), for: UIControlEvents.valueChanged)
         
         return refreshControl
     }()
@@ -52,9 +52,9 @@ class NewsTableViewController: UITableViewController, UISearchResultsUpdating {
    
     @objc
     func requestData() {
-        
         let timeRefresh = DispatchTime.now() + .milliseconds(1000)
         DispatchQueue.main.asyncAfter(deadline: timeRefresh) {
+            self.tableview.reloadData()
             self.refresher.endRefreshing()
         }
     }
@@ -62,7 +62,6 @@ class NewsTableViewController: UITableViewController, UISearchResultsUpdating {
     // MARK: - Search Controller
    
     func searchController() {
-       
         navigationItem.searchController = searchBar
         navigationItem.hidesSearchBarWhenScrolling = true
         UISearchBar.appearance().tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
@@ -77,7 +76,9 @@ class NewsTableViewController: UITableViewController, UISearchResultsUpdating {
             filteredNews = api.newsModel
         } else {
             // Filter the results
-            filteredNews = api.newsModel.filter { $0.newsTitle.lowercased().contains(searchController.searchBar.text!.lowercased()) }
+            filteredNews = api.newsModel.filter {
+                $0.newsTitle.lowercased().contains(searchController.searchBar.text!.lowercased())
+            }
         }
         self.tableView.reloadData()
     }
@@ -98,14 +99,14 @@ class NewsTableViewController: UITableViewController, UISearchResultsUpdating {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "newsCell", for: indexPath) as! NewsTableViewCell
         
-        let newsFull: NewsModel
-        newsFull = searchBar.isActive ? filteredNews[indexPath.row] : api.newsModel[indexPath.row]
+        let newsData: NewsModel
+        newsData = searchBar.isActive ? filteredNews[indexPath.row] : api.newsModel[indexPath.row]
         
-        cell.title.text = newsFull.newsTitle
-        cell.descript.text = self.api.newsModel[indexPath.row].newsDescription
-        cell.author.text = self.api.newsModel[indexPath.row].newsAuthor
-        cell.source.text = self.api.newsModel[indexPath.row].newsSource.name
-        cell.ImageView.downloadImage(from: (self.api.newsModel[indexPath.row].imageUrl))
+        cell.title.text = newsData.newsTitle
+        cell.descript.text = newsData.newsDescription
+        cell.author.text = newsData.newsAuthor
+        cell.source.text = newsData.newsSource.name
+        cell.ImageView.downloadImage(from: (newsData.imageUrl))
         
         self.newsLabelCount.text = String(self.api.newsModel.count)
         
