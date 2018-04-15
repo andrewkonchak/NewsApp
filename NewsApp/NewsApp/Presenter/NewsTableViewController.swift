@@ -12,6 +12,7 @@ import SafariServices
 class NewsTableViewController: UITableViewController, UISearchResultsUpdating {
 
     let searchBar = UISearchController(searchResultsController: nil)
+    let tabBarCnt = UITabBarController()
     
     var api = NewsApi()
     var filteredNews = [NewsModel]()
@@ -31,7 +32,7 @@ class NewsTableViewController: UITableViewController, UISearchResultsUpdating {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        api.fetchArticles(country: NewsCountry.unitedStates, category: NewsCategory.business)
+        api.fetchArticles(country: NewsCountry.unitedStates, category: NewsCategory.scienceAndNature)
         api.tableController = self
         
         newsLabelCount.layer.cornerRadius = 11
@@ -42,6 +43,7 @@ class NewsTableViewController: UITableViewController, UISearchResultsUpdating {
         tableview.refreshControl = refresher
         
         searchController()
+        createTabBarController()
     }
     
     override func didReceiveMemoryWarning() {
@@ -68,8 +70,30 @@ class NewsTableViewController: UITableViewController, UISearchResultsUpdating {
         UISearchBar.appearance().tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         searchBar.searchResultsUpdater = self
         self.searchBar.dimsBackgroundDuringPresentation = false
-        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = [NSAttributedStringKey.foregroundColor.rawValue: UIColor.white]
+        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = [NSAttributedStringKey.foregroundColor.rawValue: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)]
     }
+    
+    // MARK: - Custom TabBarController
+    
+    func createTabBarController() {
+    
+        tabBarCnt.tabBar.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        tabBarCnt.tabBar.barStyle = .black
+        
+        let AllVC = UIViewController()
+        AllVC.tabBarItem = UITabBarItem.init(title: "All", image: UIImage(named: "all"), tag: 0)
+
+        
+        let sportVC = UIViewController()
+        sportVC.tabBarItem = UITabBarItem.init(title: "Sport", image: UIImage(named: "sport"), tag: 1)
+        
+        let businessVC = UIViewController()
+        businessVC.tabBarItem = UITabBarItem.init(title: "Business", image: UIImage(named: "business"), tag: 2)
+        
+        tabBarCnt.viewControllers = [AllVC, sportVC, businessVC]
+        self.view.addSubview(tabBarCnt.view)
+    }
+    
     
     //MARK: - UISearchResultsUpdating
     
@@ -115,7 +139,7 @@ class NewsTableViewController: UITableViewController, UISearchResultsUpdating {
         
         return cell
     }
-    
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let newsUrl = self.api.newsModel[indexPath.row].url
         let URL = NSURL(string: newsUrl)!
@@ -124,6 +148,5 @@ class NewsTableViewController: UITableViewController, UISearchResultsUpdating {
         present(webVC, animated: true, completion: nil)
         
     }
-
 }
 
