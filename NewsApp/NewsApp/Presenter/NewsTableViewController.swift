@@ -68,6 +68,7 @@ class NewsTableViewController: UITableViewController, UISearchResultsUpdating {
         UISearchBar.appearance().tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         searchBar.searchResultsUpdater = self
         self.searchBar.dimsBackgroundDuringPresentation = false
+        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = [NSAttributedStringKey.foregroundColor.rawValue: UIColor.white]
     }
     
     //MARK: - UISearchResultsUpdating
@@ -125,3 +126,4 @@ class NewsTableViewController: UITableViewController, UISearchResultsUpdating {
     }
 
 }
+
