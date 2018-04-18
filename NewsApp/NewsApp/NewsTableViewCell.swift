@@ -15,5 +15,4 @@ class NewsTableViewCell: UITableViewCell {
     @IBOutlet weak var descript: UILabel!
     @IBOutlet weak var author: UILabel!
     @IBOutlet weak var source: UILabel!
-
 }

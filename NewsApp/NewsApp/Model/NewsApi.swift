@@ -22,7 +22,7 @@ class NewsApi {
         let task = URLSession.shared.dataTask(with: urlRequest) { (data,response,error) in
             
             if error != nil {
-                print(error)
+                print(error as Any)
                 return
             }
             
@@ -79,7 +79,7 @@ extension UIImageView {
             let task = URLSession.shared.dataTask(with: urlRequest) { (data,response,error) in
                 
                 if error != nil {
-                    print(error)
+                    print(error as Any)
                     return
                 }
                 DispatchQueue.main.async {

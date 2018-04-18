@@ -10,15 +10,16 @@ import UIKit
 import SafariServices
 
 class NewsTableViewController: UITableViewController, UISearchResultsUpdating {
-
-    lazy var searchBar: UISearchController = {
-        return UISearchController(searchResultsController: nil)
-    }()
     
     var api = NewsApi()
     var filteredNews = [NewsModel]()
     var category: NewsCategory = .general
-
+    
+    // MARK: - Search control
+    lazy var searchBar: UISearchController = {
+        return UISearchController(searchResultsController: nil)
+    }()
+    
     // MARK: - Refresh control
     lazy var refresher: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
@@ -29,31 +30,20 @@ class NewsTableViewController: UITableViewController, UISearchResultsUpdating {
     }()
     
     @IBOutlet var tableview: UITableView!
-    @IBOutlet weak var newsLabelCount: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        api.fetchArticles(country: NewsCountry.ukraine, category: category)
+        api.fetchArticles(country: NewsCountry.unitedStates, category: category)
         api.tableController = self
-        
-        newsLabelCount.layer.cornerRadius = 11
-        newsLabelCount.layer.borderWidth = 1
-        newsLabelCount.layer.borderColor = #colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1)
-        newsLabelCount.layer.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         
         tableview.refreshControl = refresher
         
         searchController()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        
-    }
-    
     // MARK: - Refresh control time end refreshing
-   
+    
     @objc
     func requestData() {
         let timeRefresh = DispatchTime.now() + .milliseconds(1000)
@@ -64,7 +54,7 @@ class NewsTableViewController: UITableViewController, UISearchResultsUpdating {
     }
     
     // MARK: - Search Controller
-   
+    
     func searchController() {
         navigationController?.navigationItem.searchController = searchBar
         navigationItem.hidesSearchBarWhenScrolling = true
@@ -114,11 +104,9 @@ class NewsTableViewController: UITableViewController, UISearchResultsUpdating {
         cell.source.text = newsData.newsSource.name
         cell.ImageView.downloadImage(from: (newsData.imageUrl))
         
-        self.newsLabelCount.text = String(self.api.newsModel.count)
-        
         return cell
     }
-
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         

@@ -12,5 +12,4 @@ class NewsSource: NSObject {
     
     var id: String = ""
     var name: String = ""
-
 }
