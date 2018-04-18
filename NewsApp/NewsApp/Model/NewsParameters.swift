@@ -6,19 +6,49 @@
 //  Copyright © 2018 Andrew Konchak. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 public enum NewsCategory: String {
     
-    case business = "business"
-    case entertainment = "entertainment"
-    case gaming = "gaming"
-    case general = "general"
-    case music = "music"
-    case politics = "politics"
-    case scienceAndNature = "science-and-nature"
-    case sport = "sport"
-    case technology = "technology"
+    case business = "Business"
+    case politics = "Politics"
+    case sport = "Sport"
+    case technology = "Technology"
+    case general = "General"
+    
+    static let allCategories: [NewsCategory] = [.general, .business, .politics, .sport, .technology]
+    
+    var tabBarTag: Int {
+        switch self {
+        case .general:
+            return 0
+        case .business:
+            return 1
+        case .politics:
+            return 2
+        case .sport:
+            return 3
+        case .technology:
+            return 4
+        }
+    }
+    
+    var tabBarImg: UIImage {
+        switch self {
+        case .general:
+            return #imageLiteral(resourceName: "all")
+        case .business:
+            return #imageLiteral(resourceName: "business")
+        case .politics:
+            return #imageLiteral(resourceName: "politics")
+        case .sport:
+            return #imageLiteral(resourceName: "sport")
+        case .technology:
+            return #imageLiteral(resourceName: "technology")
+        }
+    
+    }
+    
 }
 
 public enum NewsSources : String {

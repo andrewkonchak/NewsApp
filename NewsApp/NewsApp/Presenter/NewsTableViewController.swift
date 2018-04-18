@@ -11,11 +11,13 @@ import SafariServices
 
 class NewsTableViewController: UITableViewController, UISearchResultsUpdating {
 
-    let searchBar = UISearchController(searchResultsController: nil)
-    let tabBarCnt = UITabBarController()
+    lazy var searchBar: UISearchController = {
+        return UISearchController(searchResultsController: nil)
+    }()
     
     var api = NewsApi()
     var filteredNews = [NewsModel]()
+    var category: NewsCategory = .general
 
     // MARK: - Refresh control
     lazy var refresher: UIRefreshControl = {
@@ -32,7 +34,7 @@ class NewsTableViewController: UITableViewController, UISearchResultsUpdating {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        api.fetchArticles(country: NewsCountry.unitedStates, category: NewsCategory.scienceAndNature)
+        api.fetchArticles(country: NewsCountry.ukraine, category: category)
         api.tableController = self
         
         newsLabelCount.layer.cornerRadius = 11
@@ -43,7 +45,6 @@ class NewsTableViewController: UITableViewController, UISearchResultsUpdating {
         tableview.refreshControl = refresher
         
         searchController()
-        createTabBarController()
     }
     
     override func didReceiveMemoryWarning() {
@@ -65,35 +66,13 @@ class NewsTableViewController: UITableViewController, UISearchResultsUpdating {
     // MARK: - Search Controller
    
     func searchController() {
-        navigationItem.searchController = searchBar
+        navigationController?.navigationItem.searchController = searchBar
         navigationItem.hidesSearchBarWhenScrolling = true
         UISearchBar.appearance().tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         searchBar.searchResultsUpdater = self
         self.searchBar.dimsBackgroundDuringPresentation = false
         UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = [NSAttributedStringKey.foregroundColor.rawValue: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)]
     }
-    
-    // MARK: - Custom TabBarController
-    
-    func createTabBarController() {
-    
-        tabBarCnt.tabBar.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        tabBarCnt.tabBar.barStyle = .black
-        
-        let AllVC = UIViewController()
-        AllVC.tabBarItem = UITabBarItem.init(title: "All", image: UIImage(named: "all"), tag: 0)
-
-        
-        let sportVC = UIViewController()
-        sportVC.tabBarItem = UITabBarItem.init(title: "Sport", image: UIImage(named: "sport"), tag: 1)
-        
-        let businessVC = UIViewController()
-        businessVC.tabBarItem = UITabBarItem.init(title: "Business", image: UIImage(named: "business"), tag: 2)
-        
-        tabBarCnt.viewControllers = [AllVC, sportVC, businessVC]
-        self.view.addSubview(tabBarCnt.view)
-    }
-    
     
     //MARK: - UISearchResultsUpdating
     
@@ -113,7 +92,7 @@ class NewsTableViewController: UITableViewController, UISearchResultsUpdating {
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return api.newsModel.isEmpty ? 0 : 1
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -141,12 +120,17 @@ class NewsTableViewController: UITableViewController, UISearchResultsUpdating {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let newsUrl = self.api.newsModel[indexPath.row].url
-        let URL = NSURL(string: newsUrl)!
-        let webVC = SFSafariViewController(url: URL as URL)
+        tableView.deselectRow(at: indexPath, animated: true)
         
-        present(webVC, animated: true, completion: nil)
-        
+        let newsUrl = searchBar.isActive ? filteredNews[indexPath.row].url : api.newsModel[indexPath.row].url
+        if let url = URL(string: newsUrl) {
+            let webVC = SFSafariViewController(url: url)
+            if presentedViewController != nil {
+                presentedViewController?.present(webVC, animated: true, completion: nil)
+            } else {
+                present(webVC, animated: true, completion: nil)
+            }
+        }
     }
 }
 

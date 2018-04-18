@@ -32,7 +32,6 @@ class NewsApi {
                 
                 if let articlesFromJson = json["articles"] as? [[String : AnyObject]] {
                     for articleFromJson in articlesFromJson {
-                        let mainNews = NewsModel()
                         if  let title = articleFromJson["title"] as? String,
                             let source = articleFromJson["source"] as? [String : AnyObject],
                             let author = source["name"] as? String,
@@ -41,6 +40,7 @@ class NewsApi {
                             let urlToImage = articleFromJson["urlToImage"] as? String,
                             let authorNews = articleFromJson["author"] as? String,
                             let publishedAt = articleFromJson["publishedAt"] as? String {
+                            let mainNews = NewsModel()
                             
                             mainNews.newsSource.name = author
                             mainNews.newsDescription = descrip
@@ -50,14 +50,12 @@ class NewsApi {
                             mainNews.newsAuthor = authorNews
                             mainNews.newsDate = publishedAt
                             
-                        }
-                        self.newsModel.append(mainNews)
-                        self.newsModel.sort(by: {$0.newsDate < $1.newsDate}) // Sort News By publishedAt
-                        DispatchQueue.main.async {
-                            self.tableController?.tableview.reloadData()
+                            self.newsModel.append(mainNews)
                         }
                     }
                 }
+                
+                self.newsModel.sort(by: {$0.newsDate < $1.newsDate}) // Sort News By publishedAt
                 DispatchQueue.main.async {
                     self.tableController?.tableview.reloadData()
                 }
