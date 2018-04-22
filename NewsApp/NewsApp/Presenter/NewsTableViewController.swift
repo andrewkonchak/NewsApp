@@ -14,6 +14,7 @@ class NewsTableViewController: UITableViewController, UISearchResultsUpdating {
     var api = NewsApi()
     var filteredNews = [NewsModel]()
     var category: NewsCategory = .general
+    var categoryTabBar = CategoryTabBarController()
     
     // MARK: - Search control
     lazy var searchBar: UISearchController = {
@@ -34,7 +35,7 @@ class NewsTableViewController: UITableViewController, UISearchResultsUpdating {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        api.fetchArticles(country: NewsCountry.unitedStates, category: category)
+        api.fetchArticles(country: NewsCountry.ukraine, category: category)
         api.tableController = self
         
         tableview.refreshControl = refresher
