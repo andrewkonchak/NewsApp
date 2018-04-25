@@ -6,6 +6,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -97,14 +98,267 @@
                             <outlet property="delegate" destination="KDU-Br-INq" id="HNZ-Yu-XwL"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="NewsApp" id="gaC-wD-fBP"/>
+                    <navigationItem key="navigationItem" title="NewsApp" id="gaC-wD-fBP">
+                        <barButtonItem key="leftBarButtonItem" image="location" landscapeImage="NoImage" largeContentSizeImage="NoImage" style="done" id="wib-3d-vJo">
+                            <color key="tintColor" red="0.9999235272" green="1" blue="0.99988299609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="changeCountryButton:" destination="KDU-Br-INq" id="x2C-cS-LUt"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableview" destination="YQi-AN-tKX" id="7uW-tU-523"/>
+                        <segue destination="yiw-zn-vXg" kind="popoverPresentation" identifier="pop" popoverAnchorBarButtonItem="wib-3d-vJo" id="gp3-9A-1OA">
+                            <popoverArrowDirection key="popoverArrowDirection" up="YES"/>
+                        </segue>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Ot-Mm-Vzl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="185" y="-27"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="6lZ-KO-X5w">
+            <objects>
+                <viewController id="yiw-zn-vXg" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5a1-Hu-YCa">
+                        <rect key="frame" x="0.0" y="0.0" width="150" height="475"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="DJM-sr-0tY">
+                                <rect key="frame" x="0.0" y="0.0" width="150" height="474"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rge-ol-Mww">
+                                        <rect key="frame" x="0.0" y="0.0" width="150" height="50"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="australia" translatesAutoresizingMaskIntoConstraints="NO" id="TdM-jN-7XG">
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="50" id="3lj-hO-IJ0"/>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="VjJ-da-92b"/>
+                                                    <constraint firstAttribute="height" constant="50" id="kt9-ON-NVb"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="trG-QT-1Q8"/>
+                                                </constraints>
+                                            </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="37z-LV-DMK">
+                                                <rect key="frame" x="50" y="0.0" width="100" height="50"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <state key="normal" title="Australia">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="australiaActionButton:" destination="yiw-zn-vXg" eventType="touchUpInside" id="neh-eh-Zgs"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J8u-u1-abi">
+                                        <rect key="frame" x="0.0" y="53" width="150" height="50"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="france" translatesAutoresizingMaskIntoConstraints="NO" id="X6M-mQ-aGG">
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="Weq-G9-rJI"/>
+                                                    <constraint firstAttribute="height" constant="50" id="jdy-df-25M"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="rUJ-Vh-n12"/>
+                                                    <constraint firstAttribute="width" constant="50" id="tHj-70-ix5"/>
+                                                </constraints>
+                                            </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E6x-fA-5xi">
+                                                <rect key="frame" x="50" y="0.0" width="100" height="50"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <state key="normal" title="France">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="franceActionButton:" destination="yiw-zn-vXg" eventType="touchUpInside" id="oDZ-Xh-82r"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Eo-fx-Det">
+                                        <rect key="frame" x="0.0" y="106" width="150" height="50"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ukraine" translatesAutoresizingMaskIntoConstraints="NO" id="nJq-Tv-yLr">
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="Gz5-Zo-Ipa"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="Oag-F8-bGh"/>
+                                                    <constraint firstAttribute="width" constant="50" id="ihO-E5-DUd"/>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="tjr-Kj-Mab"/>
+                                                </constraints>
+                                            </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GPX-rn-9nc">
+                                                <rect key="frame" x="50" y="0.0" width="100" height="50"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <state key="normal" title="Ukraine">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="ukraineActionButton:" destination="yiw-zn-vXg" eventType="touchUpInside" id="PJj-mb-QlY"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pSb-np-BqS">
+                                        <rect key="frame" x="0.0" y="159" width="150" height="50"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="italy" translatesAutoresizingMaskIntoConstraints="NO" id="KDJ-Fv-XX7">
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="56S-21-UIq"/>
+                                                    <constraint firstAttribute="width" constant="50" id="LLZ-r4-QRm"/>
+                                                    <constraint firstAttribute="height" constant="50" id="ekU-c2-WJ4"/>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="nmY-F8-n51"/>
+                                                </constraints>
+                                            </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ECg-mk-S9k">
+                                                <rect key="frame" x="50" y="0.0" width="100" height="50"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <state key="normal" title="Italy">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="italyActionButton:" destination="yiw-zn-vXg" eventType="touchUpInside" id="aEC-CH-qaM"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HaU-rh-Ala">
+                                        <rect key="frame" x="0.0" y="212" width="150" height="50"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="united-kingdom" translatesAutoresizingMaskIntoConstraints="NO" id="KDe-Tu-wPP">
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="HmZ-rx-vkM"/>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="ag1-v4-TGZ"/>
+                                                    <constraint firstAttribute="height" constant="50" id="bBt-Yn-lh6"/>
+                                                    <constraint firstAttribute="width" constant="50" id="eYd-a9-OST"/>
+                                                </constraints>
+                                            </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LcI-JU-f3V">
+                                                <rect key="frame" x="50" y="0.0" width="100" height="50"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <state key="normal" title="UK">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="ukActionButton:" destination="yiw-zn-vXg" eventType="touchUpInside" id="Klz-Xo-Ukv"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YoU-vN-VkJ">
+                                        <rect key="frame" x="0.0" y="265" width="150" height="50"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="united-states" translatesAutoresizingMaskIntoConstraints="NO" id="reH-fD-gf1">
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="5Hj-Cc-JFJ"/>
+                                                    <constraint firstAttribute="height" constant="50" id="5MO-R5-wCx"/>
+                                                    <constraint firstAttribute="width" constant="50" id="Ivf-nb-9fd"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="Q5V-BM-Ud4"/>
+                                                </constraints>
+                                            </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mpn-l5-tGI">
+                                                <rect key="frame" x="50" y="0.0" width="100" height="50"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <state key="normal" title="USA">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="usaActionButton:" destination="yiw-zn-vXg" eventType="touchUpInside" id="vlw-oM-kfg"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y7I-10-jjz">
+                                        <rect key="frame" x="0.0" y="318" width="150" height="50"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="india" translatesAutoresizingMaskIntoConstraints="NO" id="4cH-z0-Su8">
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="50" id="4Io-iU-0tZ"/>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="4eS-2f-m9x"/>
+                                                    <constraint firstAttribute="height" constant="50" id="kFo-Hh-kHp"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="lKI-Xk-xHL"/>
+                                                </constraints>
+                                            </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9BC-nj-xNr">
+                                                <rect key="frame" x="50" y="0.0" width="100" height="50"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <state key="normal" title="India">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="indiaActionButton:" destination="yiw-zn-vXg" eventType="touchUpInside" id="0mq-As-hQf"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yO5-Qm-3B1">
+                                        <rect key="frame" x="0.0" y="371" width="150" height="50"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="germany" translatesAutoresizingMaskIntoConstraints="NO" id="S0W-8p-Ohp">
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="VRI-Lc-J6F"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="e7q-ia-iDk"/>
+                                                    <constraint firstAttribute="height" constant="50" id="fk3-sg-A7C"/>
+                                                    <constraint firstAttribute="width" constant="50" id="k0z-gW-QDl"/>
+                                                </constraints>
+                                            </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WUK-k8-J2K">
+                                                <rect key="frame" x="50" y="0.0" width="100" height="50"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <state key="normal" title="Germany">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="germanyActionButton:" destination="yiw-zn-vXg" eventType="touchUpInside" id="6Sn-ph-Hbq"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oyg-d2-8hb">
+                                        <rect key="frame" x="0.0" y="424" width="150" height="50"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="russia" translatesAutoresizingMaskIntoConstraints="NO" id="ZhS-ln-SaS">
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="YHU-c4-V0e"/>
+                                                    <constraint firstAttribute="width" constant="50" id="pdG-n8-K1D"/>
+                                                </constraints>
+                                            </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4TA-y2-dWM">
+                                                <rect key="frame" x="50" y="0.0" width="100" height="50"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <state key="normal" title="Russia">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="russiaActionButton:" destination="yiw-zn-vXg" eventType="touchUpInside" id="FEK-UF-NHZ"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="DJM-sr-0tY" firstAttribute="top" secondItem="5a1-Hu-YCa" secondAttribute="top" id="177-Uv-8CN"/>
+                            <constraint firstAttribute="trailing" secondItem="DJM-sr-0tY" secondAttribute="trailing" id="22O-F1-b1F"/>
+                            <constraint firstAttribute="bottom" secondItem="DJM-sr-0tY" secondAttribute="bottom" id="SX9-F7-dwe"/>
+                            <constraint firstItem="DJM-sr-0tY" firstAttribute="leading" secondItem="5a1-Hu-YCa" secondAttribute="leading" id="jSV-q9-75U"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="iFg-q3-IRH"/>
+                    </view>
+                    <value key="contentSizeForViewInPopover" type="size" width="150" height="450"/>
+                    <size key="freeformSize" width="150" height="475"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="D5e-Pj-I9E" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="806.39999999999998" y="-125.03748125937032"/>
         </scene>
         <!--Item-->
         <scene sceneID="8kR-W2-wUo">
@@ -146,5 +400,15 @@
     </scenes>
     <resources>
         <image name="NoImage" width="343" height="245"/>
+        <image name="australia" width="128" height="128"/>
+        <image name="france" width="128" height="128"/>
+        <image name="germany" width="128" height="128"/>
+        <image name="india" width="128" height="128"/>
+        <image name="italy" width="128" height="128"/>
+        <image name="location" width="24" height="24"/>
+        <image name="russia" width="128" height="128"/>
+        <image name="ukraine" width="128" height="128"/>
+        <image name="united-kingdom" width="128" height="128"/>
+        <image name="united-states" width="128" height="128"/>
     </resources>
 </document>

@@ -14,7 +14,6 @@ class NewsTableViewController: UITableViewController, UISearchResultsUpdating {
     var api = NewsApi()
     var filteredNews = [NewsModel]()
     var category: NewsCategory = .general
-    var categoryTabBar = CategoryTabBarController()
     
     // MARK: - Search control
     lazy var searchBar: UISearchController = {
@@ -120,6 +119,25 @@ class NewsTableViewController: UITableViewController, UISearchResultsUpdating {
                 present(webVC, animated: true, completion: nil)
             }
         }
+    }
+}
+
+extension NewsTableViewController: UIPopoverPresentationControllerDelegate {
+   
+    @IBAction func changeCountryButton(_ sender: AnyObject) {
+        self.performSegue(withIdentifier: "pop", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "pop" {
+            let dest = segue.destination
+            if let pop = dest.popoverPresentationController {
+                pop.delegate = self
+            }
+        }
+    }
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
     }
 }
 

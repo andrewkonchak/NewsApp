@@ -21,7 +21,6 @@ class CategoryTabBarController: UITabBarController {
                 let item = UITabBarItem(title: category.rawValue, image: category.tabBarImg, tag: category.tabBarTag)
                 newsController.category = category
                 newsController.tabBarItem = item
-                newsController.searchController()
                 controllersList.append(navController)
             }
         }

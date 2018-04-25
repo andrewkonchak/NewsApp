@@ -58,5 +58,6 @@ public enum NewsCountry: String {
     case unitedStates = "us"
     case russia = "ru"
     case ukraine = "ua"
+    case france = "fr"
 }
 

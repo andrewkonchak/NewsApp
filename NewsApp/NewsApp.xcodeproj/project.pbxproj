@@ -161,8 +161,8 @@
 		49AEA26A2057ECDF00C0F8EC /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
-				499EFEFA205BF0FD00E38318 /* NewsTableViewController.swift */,
 				4842E1AE2083CF7300A62D82 /* CategoryTabBarController.swift */,
+				499EFEFA205BF0FD00E38318 /* NewsTableViewController.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
