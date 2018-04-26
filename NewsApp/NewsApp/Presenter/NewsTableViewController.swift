@@ -14,6 +14,7 @@ class NewsTableViewController: UITableViewController, UISearchResultsUpdating {
     var api = NewsApi()
     var filteredNews = [NewsModel]()
     var category: NewsCategory = .general
+    var country: NewsCountry = .ukraine
     
     // MARK: - Search control
     lazy var searchBar: UISearchController = {
@@ -34,12 +35,10 @@ class NewsTableViewController: UITableViewController, UISearchResultsUpdating {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        api.fetchArticles(country: NewsCountry.ukraine, category: category)
+        api.fetchArticles(country: country, category: category)
         api.tableController = self
         
         tableview.refreshControl = refresher
-        
-        searchController()
     }
     
     // MARK: - Refresh control time end refreshing
@@ -56,10 +55,13 @@ class NewsTableViewController: UITableViewController, UISearchResultsUpdating {
     // MARK: - Search Controller
     
     func searchController() {
+        
         navigationController?.navigationItem.searchController = searchBar
         navigationItem.hidesSearchBarWhenScrolling = true
+        
         UISearchBar.appearance().tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         searchBar.searchResultsUpdater = self
+        
         self.searchBar.dimsBackgroundDuringPresentation = false
         UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = [NSAttributedStringKey.foregroundColor.rawValue: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)]
     }
@@ -130,14 +132,26 @@ extension NewsTableViewController: UIPopoverPresentationControllerDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "pop" {
-            let dest = segue.destination
-            if let pop = dest.popoverPresentationController {
-                pop.delegate = self
+            if let dest = segue.destination as? CountryViewController {
+                dest.delegate = self
+                if let pop = dest.popoverPresentationController {
+                    pop.delegate = self
+                }
             }
         }
     }
+    
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         return .none
     }
+}
+
+extension NewsTableViewController: CountryViewControllerDelegate {
+    
+    func didSelectCountry(_ country: NewsCountry) {
+        self.country = country
+        api.fetchArticles(country: country, category: category)
+    }
+    
 }
 

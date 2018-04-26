@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4842E1AF2083CF7300A62D82 /* CategoryTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4842E1AE2083CF7300A62D82 /* CategoryTabBarController.swift */; };
+		48F445E82090F09300D3553A /* CountryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F445E72090F09300D3553A /* CountryViewController.swift */; };
 		49603DA1207CC24F00F26CC3 /* NewsParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49603DA0207CC24F00F26CC3 /* NewsParameters.swift */; };
 		499EFEF7205BECBC00E38318 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499EFEF6205BECBC00E38318 /* NewsTableViewCell.swift */; };
 		499EFEF9205BEEE400E38318 /* NewsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499EFEF8205BEEE400E38318 /* NewsModel.swift */; };
@@ -41,6 +42,7 @@
 
 /* Begin PBXFileReference section */
 		4842E1AE2083CF7300A62D82 /* CategoryTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTabBarController.swift; sourceTree = "<group>"; };
+		48F445E72090F09300D3553A /* CountryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryViewController.swift; sourceTree = "<group>"; };
 		49603DA0207CC24F00F26CC3 /* NewsParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsParameters.swift; sourceTree = "<group>"; };
 		499EFEF6205BECBC00E38318 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 		499EFEF8205BEEE400E38318 /* NewsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsModel.swift; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 			children = (
 				4842E1AE2083CF7300A62D82 /* CategoryTabBarController.swift */,
 				499EFEFA205BF0FD00E38318 /* NewsTableViewController.swift */,
+				48F445E72090F09300D3553A /* CountryViewController.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -301,6 +304,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48F445E82090F09300D3553A /* CountryViewController.swift in Sources */,
 				499EFEF9205BEEE400E38318 /* NewsModel.swift in Sources */,
 				49AEA23B2057EBFA00C0F8EC /* AppDelegate.swift in Sources */,
 				499EFEFB205BF0FD00E38318 /* NewsTableViewController.swift in Sources */,

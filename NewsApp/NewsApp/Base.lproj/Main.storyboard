@@ -67,7 +67,6 @@
                                     <constraints>
                                         <constraint firstAttribute="bottom" secondItem="lCB-Wu-3oy" secondAttribute="bottom" constant="3" id="6be-He-fzD"/>
                                         <constraint firstItem="JfV-bo-8wk" firstAttribute="leading" secondItem="Ri5-QI-ew9" secondAttribute="leading" id="BFK-L2-Ewn"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="JfV-bo-8wk" secondAttribute="trailing" id="Fal-MJ-A5E"/>
                                         <constraint firstItem="Ri5-QI-ew9" firstAttribute="leading" secondItem="9tJ-IV-jaP" secondAttribute="leading" constant="159" id="FyU-dn-gnt"/>
                                         <constraint firstItem="JfV-bo-8wk" firstAttribute="leading" secondItem="kLG-pt-5Jm" secondAttribute="trailing" constant="4" id="RHv-V8-4Hz"/>
                                         <constraint firstItem="JfV-bo-8wk" firstAttribute="trailing" secondItem="Ri5-QI-ew9" secondAttribute="trailing" id="U23-uo-din"/>
@@ -117,10 +116,10 @@
             </objects>
             <point key="canvasLocation" x="185" y="-27"/>
         </scene>
-        <!--View Controller-->
+        <!--Country View Controller-->
         <scene sceneID="6lZ-KO-X5w">
             <objects>
-                <viewController id="yiw-zn-vXg" sceneMemberID="viewController">
+                <viewController id="yiw-zn-vXg" customClass="CountryViewController" customModule="NewsApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5a1-Hu-YCa">
                         <rect key="frame" x="0.0" y="0.0" width="150" height="475"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -147,7 +146,7 @@
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="australiaActionButton:" destination="yiw-zn-vXg" eventType="touchUpInside" id="neh-eh-Zgs"/>
+                                                    <action selector="didPressCountry:" destination="yiw-zn-vXg" eventType="touchUpInside" id="7p5-I1-QQC"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -171,7 +170,7 @@
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="franceActionButton:" destination="yiw-zn-vXg" eventType="touchUpInside" id="oDZ-Xh-82r"/>
+                                                    <action selector="didPressCountry:" destination="yiw-zn-vXg" eventType="touchUpInside" id="cuY-C5-2Bt"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -195,7 +194,7 @@
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="ukraineActionButton:" destination="yiw-zn-vXg" eventType="touchUpInside" id="PJj-mb-QlY"/>
+                                                    <action selector="didPressCountry:" destination="yiw-zn-vXg" eventType="touchUpInside" id="cfx-Ex-epB"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -219,7 +218,7 @@
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="italyActionButton:" destination="yiw-zn-vXg" eventType="touchUpInside" id="aEC-CH-qaM"/>
+                                                    <action selector="didPressCountry:" destination="yiw-zn-vXg" eventType="touchUpInside" id="Pze-nR-e3d"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -243,7 +242,7 @@
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="ukActionButton:" destination="yiw-zn-vXg" eventType="touchUpInside" id="Klz-Xo-Ukv"/>
+                                                    <action selector="didPressCountry:" destination="yiw-zn-vXg" eventType="touchUpInside" id="tpN-On-akr"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -267,7 +266,7 @@
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="usaActionButton:" destination="yiw-zn-vXg" eventType="touchUpInside" id="vlw-oM-kfg"/>
+                                                    <action selector="didPressCountry:" destination="yiw-zn-vXg" eventType="touchUpInside" id="cN2-G4-NMQ"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -291,7 +290,7 @@
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="indiaActionButton:" destination="yiw-zn-vXg" eventType="touchUpInside" id="0mq-As-hQf"/>
+                                                    <action selector="didPressCountry:" destination="yiw-zn-vXg" eventType="touchUpInside" id="bK3-KM-wsW"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -315,7 +314,7 @@
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="germanyActionButton:" destination="yiw-zn-vXg" eventType="touchUpInside" id="6Sn-ph-Hbq"/>
+                                                    <action selector="didPressCountry:" destination="yiw-zn-vXg" eventType="touchUpInside" id="SYM-ns-1z1"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -337,7 +336,7 @@
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="russiaActionButton:" destination="yiw-zn-vXg" eventType="touchUpInside" id="FEK-UF-NHZ"/>
+                                                    <action selector="didPressCountry:" destination="yiw-zn-vXg" eventType="touchUpInside" id="Q5k-gO-Doq"/>
                                                 </connections>
                                             </button>
                                         </subviews>

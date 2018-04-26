@@ -36,7 +36,7 @@ public enum NewsCategory: String {
     var tabBarImg: UIImage {
         switch self {
         case .general:
-            return #imageLiteral(resourceName: "all")
+            return #imageLiteral(resourceName: "general")
         case .business:
             return #imageLiteral(resourceName: "business")
         case .politics:
@@ -59,5 +59,31 @@ public enum NewsCountry: String {
     case russia = "ru"
     case ukraine = "ua"
     case france = "fr"
+    
+    init?(with title: String) {
+        switch title {
+        case "Australia":
+            self = .australia
+        case "Germany":
+            self = .germany
+        case "UK":
+            self = .unitedKingdom
+        case "India":
+            self = .india
+        case "Italy":
+            self = .italy
+        case "USA":
+            self = .unitedStates
+        case "Russia":
+            self = .russia
+        case "Ukraine":
+            self = .ukraine
+        case "France":
+            self = .france
+        default:
+            return nil
+        }
+    }
+    
 }
 
